@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现表单中单选多选列表数据获取</title>
+	</head>
+	<body>
+		<h1>实现表单中单选多选列表数据获取</h1>
+		<h2>用户注册</h2>
+		<form action="#" method="get">
+			姓名:<input type="text" name="uname"><br>
+			性别:<input type="radio" name="sex">男
+				<input type="radio" name="sex">女<br>
+			学历:<input type="radio" name="deg">研究生
+				<input type="radio" name="deg">本科
+				<input type="radio" name="deg">专科
+				<input type="radio" name="deg">小学<br>
+			爱好:<input type="checkbox" name="love">滑雪
+				<input type="checkbox" name="love">编程
+				<input type="checkbox" name="love">钓鱼<br>
+			省份:<select  name="city">
+				<option value="1">北京</option>
+				<option value="2">上海</option>
+				<option value="3">广州</option>
+				<option value="4">深圳</option>
+				</select><br>		
+			<input type="button" value="显示" onclick="show();">
+		</form>
+		<script>
+			function show(){
+				var uname = document.forms[0].uname.value;
+				//alert("用户姓名="+uname);
+				var sex = document.forms[0].sex;
+				//获取性别
+				if(sex[0].checked){
+					alert("性别:男");
+				}else{
+					alert("性别:女");
+				}
+				//获取学历
+				var deg = document.forms[0].deg;
+				if(deg[0].checked){
+					alert("学历:研究生");
+				}
+				if(deg[1].checked){
+					alert("学历:本科");
+				}
+				if(deg[2].checked){
+					alert("学历:专科");
+				}
+				if(deg[3].checked){
+					alert("学历:小学");
+				}
+				//获取爱好
+				var love= document.forms[0].love;
+				var str = "爱好";
+				var loveArr = ["滑雪","编程","钓鱼"];
+				for (var n=0;n<love.length;n++) {
+					if(love[n].checked){
+						str = str+","+loveArr[n];
+					}
+				}
+				alert(str);
+				//获取省份
+				var city = ["北京","上海","广州","深圳"];
+				var cityindex = document.forms[0].city.selectedIndex;
+				alert("所在城市"+city[cityindex]);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--适配手机 真机测试才有用-->
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		meta
+		<title>移动平台的触摸事件</title>
+		<style type="text/css">
+		/*body和html这两个标签在不同的浏览器下有不同的样式*/
+		body,html {
+			height: 100%;
+			margin: 0;
+		}
+		#content{
+			background-color: #7f7f7f;
+		}
+		#logo{
+			position: absolute;
+			left: 100px;
+			top: 100px;
+		}
+		</style>
+	</head>
+	<body id="kScreen">
+		<h1>移动平台的触摸事件</h1>
+		<div id="content">
+		<img id="logo" width="30%" height="30%" src="img/Icon-60.png">
+		</div>
+		<script>
+		
+			var w = document.getElementById('kScreen').offsetWidth;
+			var h = document.getElementById('kScreen').offsetHeight;
+			
+			var con = document.getElementById("content");
+			var img = document.getElementById("logo");
+			con.style.width = w + 'px';
+			con.style.height = h + "px";
+			con.ontouchstart = function(e){
+				var touch1 = e.touches[0];
+				var x = touch1.clientX;
+				var y = touch1.clientY;
+//				alert("x="+x+",y="+y);
+				
+				img.style.left = x+"px";
+				img.style.top = y+"px";
+			}
+			con.ontouchmove = function(e){
+				e.preventDefault();
+				var touch1 = e.touches[0];
+				var x = touch1.clientX;
+				var y = touch1.clientY;
+				alert("x="+x+",y="+y);
+				
+				img.style.left = x+"px";
+				img.style.top = y+"px";
+			}
+			con.ontouchend = function(e){
+				var touch1 = e.touches[0];
+				img.style.left = "0px";
+				img.style.top = "0px";
+			}
+		</script>
+	</body>
+</html>
